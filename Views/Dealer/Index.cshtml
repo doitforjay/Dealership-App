@@ -1,0 +1,58 @@
+﻿@model WebApp.Models.ViewModel
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery")
+    @Styles.Render("~/Styles/css")
+    @Scripts.Render("~/bundles/table")
+}
+
+@* Select dealer dropdown list *@
+
+<div class="selectDealer">
+    <p style="font-size: 18px;"><u>Select Dealer</u></p>
+    <select class="styled-select yellow rounded" action="" id="dealers">
+
+        @foreach (var item in Model.dealers)
+        {
+            <option style="color: #990066">@item.DealerName </option>
+        }
+    </select>
+</div>
+
+<table class="table" id="tabl">
+    <tread>
+        <caption id="nme">Jay</caption>
+        <tr>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Color
+            </th>
+            <th>
+                Year
+            </th>
+            <th id="name">
+                Miles
+            </th>
+            <th>
+
+            </th>
+
+        </tr>
+    </tread>
+    <tbody  id="tab">
+   @Html.Action("FilterTable", new { ID = 1 })
+    </tbody>  
+</table>
+
+    @Html.ActionLink("create", "Create", "Dealer", new { @class = "createbutton" })
+
+
+    <div id="dialog" title="Create Album" style="overflow: hidden;"></div>

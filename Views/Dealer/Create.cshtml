@@ -1,0 +1,52 @@
+﻿@model WebApp.Models.ViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery")
+    @Styles.Render("~/Styles/css")
+        
+  }
+
+<h2 style="color:white;">Add Inventory</h2>
+
+<div class="title">Enter Inventory values</div>
+
+@using (Html.BeginForm("Create", "Dealer", FormMethod.Post, new { @id = "frmSaveData" }))
+{
+    <table>
+        <tr >
+
+        </tr>
+        <tr>
+            <td>@Html.Label("Make")</td>
+            <td>@Html.TextBoxFor(m => m.Make1)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Model")</td>
+            <td>@Html.TextBoxFor(m => m.Model1)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Miles")</td>
+            <td>@Html.TextBoxFor(m => m.Miles)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Year")</td>
+            <td>@Html.TextBoxFor(m => m.Year)</td>
+        </tr>
+        <tr>
+            <td>
+                <div style="color: red; font-size: larger;">@ViewBag.Message</div>
+            </td>
+            <td>
+                <input type="submit" />
+            </td>
+        </tr>
+    </table>
+   
+}
+<div class="selectDealer">
+@Html.ActionLink("back", "Index", "Dealer", new { @class = "myButton" })
+</div>

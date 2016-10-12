@@ -1,0 +1,84 @@
+﻿@model WebApp.Models.ViewModel
+<!doctype html>
+<html lang="en">
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery")
+    @Styles.Render("~/Styles/css")
+    @Scripts.Render("~/bundles/table")
+
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Dialog - Modal form</title>
+</head>
+
+    <body>
+        <div style="align-content:center">
+            <img class="carpic" id="picture" />
+        </div>
+
+    <div id="dialog-form" title="Create new user">
+@using (Html.BeginForm("Create", "Dealer", FormMethod.Post, new { @id = "frmSaveData" }))
+{
+    <table>
+        <tr class="clickable row"></tr>
+        <tr>
+            <td>@Html.Label("Make")</td>
+            <td>
+                <select id="mk">
+                @foreach (var item in Model.mks)
+                {
+                    <option value="@item.MakeID">@item.MakeDesc</option>
+                }
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Model")</td>
+            <td><select select id="md">
+                @foreach (var item in Model.mdls)
+                {
+                    <option value="@item.ModelID">@item.ModelDesc</option>
+                }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Color")</td>
+            <td>
+                <select select id="cl">
+                    @foreach (var item in Model.Clrs)
+                    {
+                        <option value="@item.ColorID">@item.ColorDesc</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Miles")</td>
+            <td value="@Model.Miles" style="color:black">@Html.TextBoxFor(m => m.Miles, new { @class = "ml", @dir = "rtl" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Year")</td>
+            <td value="@Model.Year" style="color:black">@Html.TextBoxFor(m => m.Year, new { @class = "yr" , @dir="rtl"})</td>
+        </tr>
+        <tr>
+            <td>
+                <div style="color: red; font-size: larger;">@ViewBag.Message</div>
+            </td>
+            <td>
+                <input type="submit" />
+            </td>
+        </tr>
+    </table>
+
+}
+    </div>
+
+ 
+    </body>
+    </html>

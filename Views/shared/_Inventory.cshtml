@@ -1,0 +1,32 @@
+﻿@model WebApp.Models.ViewModel
+
+    @foreach (var item in Model.Dlrinv)
+    {
+        <tr>
+
+        <td data-id="@item.Make">@Html.DisplayFor(modeItem => item.Make1.MakeDesc)</td>
+
+        <td data-id="@item.Model">@Html.DisplayFor(modeItem => item.Model1.ModelDesc)</td>
+
+        <td data-id="@item.ColorID">@Html.DisplayFor(modeItem => item.Color.ColorDesc)</td>
+
+        <td>@Html.DisplayFor(modeItem => item.Year)</td>
+
+        <td>@Html.DisplayFor(modeItem => item.Miles)</td>
+
+        <td class="dtl">
+            <button class="details" data-image="@item.pic">Edit</button> 
+        </td>
+
+        </tr>
+    }
+
+<style>
+  td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: white;
+}
+</style>
